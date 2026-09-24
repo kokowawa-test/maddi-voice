@@ -111,8 +111,11 @@ function speak(text){
 
     console.log(voices);
 
-    if (voices.length > 0){
-        speech.voice = voices[5];
+if (voices.length > 0){
+    speech.voice =
+        voices.find(v =>
+            v.name.includes("Google UK English Female")
+        ) || voices[0];
     }
 
     speech.rate = 1;
