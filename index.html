@@ -53,13 +53,23 @@
     <p><b>Maddi:</b> Hello Hamada. Ready for Voice Mode.</p>
 </div>
 
+    <br>
+
+<img id="previewImage"
+     style="max-width:500px;
+            display:none;
+            border-radius:10px;
+            margin-top:15px;">
 <button onclick="startListening()">
 🎤 Speak
 </button>
 
 <br><br>
 
-<input type="file" id="imageUpload" accept="image/*">
+<input type="file"
+       id="imageUpload"
+       accept="image/*"
+       onchange="previewSelectedImage(event)">
 
 <br><br>
 
@@ -113,7 +123,18 @@ function startListening(){
         speak(answer);
     };
 }
+function previewSelectedImage(event){
 
+    const image =
+        document.getElementById("previewImage");
+
+    image.src =
+        URL.createObjectURL(
+            event.target.files[0]
+        );
+
+    image.style.display = "block";
+}
 </script>
 
 </body>
