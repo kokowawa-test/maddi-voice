@@ -67,6 +67,11 @@ style="max-width:100px;
 
 <br><br>
 
+    <input type="file"
+id="imageUpload"
+accept="image/*"
+onchange="previewSelectedImage(event)">
+    
 <input
     type="text"
     id="userInput"
@@ -81,10 +86,7 @@ style="max-width:100px;
 <button onclick="sendMessage()">
 Send
 </button>
-<input type="file"
-       id="imageUpload"
-       accept="image/*"
-       onchange="previewSelectedImage(event)">
+
 
 <br><br>
 
@@ -157,7 +159,11 @@ function startListening(){
         "Maddi",
         "You asked: " + question
     );
-
+        
+speak(
+    "You asked: " + question
+);
+        
     document.getElementById(
         "userInput"
     ).value = "";
