@@ -138,6 +138,30 @@ function startListening(){
         speak(answer);
     };
 }
+    function sendMessage(){
+
+    let question =
+        document.getElementById(
+            "userInput"
+        ).value;
+
+    if(question.trim() === "")
+        return;
+
+    addMessage(
+        "You",
+        question
+    );
+
+    addMessage(
+        "Maddi",
+        "You asked: " + question
+    );
+
+    document.getElementById(
+        "userInput"
+    ).value = "";
+}
 function previewSelectedImage(event){
 
     const image =
