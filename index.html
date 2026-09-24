@@ -64,7 +64,10 @@ style="max-width:100px;
 <button onclick="startListening()">
 🎤 Speak
 </button>
-
+    
+<button onclick="stopSpeaking()">
+🛑 Stop
+</button>
 <br><br>
     
 <input
@@ -150,6 +153,7 @@ function startListening(){
 
         speak(answer);
     };
+    
 }
     function sendMessage(){
 
@@ -200,6 +204,11 @@ fetch('/.netlify/functions/chat', {
     document.getElementById(
         "userInput"
     ).value = "";
+}
+    function stopSpeaking(){
+
+    window.speechSynthesis.cancel();
+
 }
 function previewSelectedImage(event){
 
