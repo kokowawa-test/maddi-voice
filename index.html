@@ -163,14 +163,36 @@ function startListening(){
         question
     );
 
+fetch('/.netlify/functions/chat', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        message: question
+    })
+})
+.then(response => response.json())
+.then(data => {
+
     addMessage(
         "Maddi",
-        "You asked: " + question
+        data.answer
     );
-        
-speak(
-    "You asked: " + question
-);
+
+    speak(
+        data.answer
+    );
+
+})
+.catch(error => {
+
+    addMessage(
+        "Maddi",
+        "Sorry, I couldn't reach Gemini."
+    );
+
+});
         
     document.getElementById(
         "userInput"
